@@ -1,0 +1,26 @@
+{
+  "name": "mini-insta",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon app.js"
+  },
+  "keywords": [
+    "mern",
+    "react",
+    "redux",
+    "node",
+    "express",
+    "mongo"
+  ],
+  "author": "Valeri Krušinin",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.16.4",
+    "mongoose": "^5.5.2"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.11"
+  }
+}
