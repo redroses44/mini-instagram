@@ -21,6 +21,27 @@ const UserSchema = new Schema({
   avatar: {
     type: String
   },
+  following: [
+    {
+      user: {
+        type: Schema.Types.ObjectId
+      }
+    }
+  ],
+  followers: [
+    {
+      user: {
+        type: Schema.Types.ObjectId
+      }
+    }
+  ],
+  images: [
+    {
+      image: {
+        type: String
+      }
+    }
+  ],
   createdAt: {
     type: Date,
     default: Date.now

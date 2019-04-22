@@ -13,6 +13,7 @@ const User = require('../../models/User')
 const keys = require('../../config/keys')
 
 
+
 router.post('/register', (req, res) => {
   const { errors, isValid } = validateRegister(req.body)
   const { name, username, email, password } = req.body
@@ -110,5 +111,33 @@ router.get(
     })
   }
 )
+
+//FOLLOW
+
+router.post('/:id', passport.authenticate('jwt', { session: false }), async (req, res) => {
+  const loggedInUser = await User.findById(req.user.id)
+  const user = await User.findById(req.params.id)
+
+  if (loggedInUser.following
+    .map(user => user._id.toString())
+    .filter(id => id === req.params.id)
+    .length > 0) {
+    loggedInUser.following.shift(user.id)
+    user.followers.shift(loggedInUser.id)
+  } else {
+    loggedInUser.following.unshift(user.id)
+    user.followers.unshift(loggedInUser.id)
+  }
+
+  await loggedInUser.save()
+  await user.save()
+  await res.json(loggedInUser)
+})
+
+router.get('/', (req, res) => {
+  User.find()
+    .then(users => res.json(users))
+})
+
 
 module.exports = router
