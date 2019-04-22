@@ -37,9 +37,33 @@ const UserSchema = new Schema({
   ],
   images: [
     {
-      image: {
+      user: {
+        type: Schema.Types.ObjectId
+      },
+      file: {
+        type: String,
+        required: true
+      },
+      caption: {
         type: String
-      }
+      },
+      likes: [
+        {
+          user: {
+            type: Schema.Types.ObjectId
+          }
+        }
+      ],
+      comments: [
+        {
+          user: {
+            type: Schema.Types.ObjectId
+          },
+          text: {
+            type: String
+          }
+        }
+      ]
     }
   ],
   createdAt: {

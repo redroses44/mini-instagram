@@ -7,6 +7,7 @@ const passport = require('passport')
 const app = express()
 
 const users = require('./routes/api/users')
+const posts = require('./routes/api/posts')
 
 app.use(express.urlencoded({ extended: false }))
 app.use(cors())
@@ -16,6 +17,7 @@ const PORT = process.env.PORT || 5500
 const db = require('./config/keys').mongoURI
 
 app.use('/api/users', users)
+app.use('/api/posts', posts)
 
 mongoose
   .connect(db, { useNewUrlParser: true })

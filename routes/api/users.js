@@ -112,7 +112,7 @@ router.get(
   }
 )
 
-//FOLLOW
+//FOLLOW & UNFOLLOW
 
 router.post('/:id', passport.authenticate('jwt', { session: false }), async (req, res) => {
   const loggedInUser = await User.findById(req.user.id)
