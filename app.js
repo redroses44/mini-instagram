@@ -1,6 +1,8 @@
 const express = require('express')
 const mongoose = require('mongoose')
 const cors = require('cors')
+const passport = require('passport')
+
 
 const app = express()
 
@@ -19,5 +21,10 @@ mongoose
   .connect(db, { useNewUrlParser: true })
   .then(() => console.log('MongoDB Connected'))
   .catch(err => console.log(err))
+
+app.use(passport.initialize())
+require('./config/passport')(passport)
+
+
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`))
