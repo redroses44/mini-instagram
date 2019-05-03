@@ -1,4 +1,4 @@
-const Validator = require('validator')
+/* const Validator = require('validator')
 const isEmpty = require('../utils/is-empty')
 
 const validatePost = data => {
@@ -18,3 +18,4 @@ const validatePost = data => {
 }
 
 module.exports = validatePost
+ */

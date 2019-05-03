@@ -10,6 +10,9 @@ const UserSchema = new Schema({
     type: String,
     required: true
   },
+  facebookId: {
+    type: String
+  },
   email: {
     type: String,
     required: true

@@ -9,7 +9,6 @@ const validatePost = require('../../validation/post')
 const User = require('../../models/User')
 
 router.post('/:id', passport.authenticate('jwt', { session: false }), async (req, res) => {
-
   const { isValid, errors } = validatePost(req.body)
   if (!isValid) {
     return res.json(400, errors)
@@ -17,7 +16,7 @@ router.post('/:id', passport.authenticate('jwt', { session: false }), async (req
   const user = await User.findById(req.params.id)
 
   const newPost = new Post({
-    file: req.body.file,
+    file: req.file,
     caption: req.body.caption
   })
   await user.images.push(newPost)
